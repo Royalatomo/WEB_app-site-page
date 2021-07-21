@@ -1,0 +1,58 @@
+<%- include('partials/header') -%>
+    <link rel="stylesheet" href="/css/home.css" />
+
+    <div class="head" style="background: linear-gradient(rgba(20,20,20, .5),rgba(20,20,20, .5)),url('/img/bgAdmin.jpg');">
+        <div class="info">
+            <div class="admin-info">
+                <div class="imgAdmin">
+                    <% if (verified){ %>
+                        <img class="verification" src="/img/tick.png" alt="">
+                    <% } %>
+                    <img src="<%=userImg%>" />
+                </div>
+                <div class="name">
+                    <p class="admin-name"><%=userName%></p>
+                    <p class="message">Welcome To My Blog!</p>
+                </div>
+            </div>
+
+            <% if (!userLogin){ %>
+                <a style="color: black;" href="/login"><div class="button">
+                  <p>login</p>
+                  <img src="/img/login.png" alt="" />
+                </div></a>
+                <% } %>
+
+            <% if (userLogin){ %>
+                <a style="color: black;" href="/logout"><div class="button button-logout">
+                  <img src="/img/logout.png" alt="" />
+                </div></a>
+                <% } %>
+        </div>
+    </div>
+
+    <div class="blogs">
+        <% let a = 0 %>
+        <% for (let i of blogsArray){ %>
+            <div class="blog-item">
+                <div class="blog-img">
+                    <a href="/blog/<%=blogLinks[a]%>"><img src=<%= i.img %>></a>
+                </div>
+                <div class="blog-info">
+                    <a style="color: black;" href="/blog/<%=blogLinks[a]%>"><p class="blog-title"><%=i.title%></p></a>
+                    <p class="blog-content"><%=String(i.normalContent).slice(0, 250) + "..."%><a href="/blog/<%=blogLinks[a]%>">Read More</a></p>
+                </div>
+            </div>
+            <% a++ %>
+        <% } %>
+    </div>
+
+    <% if (userLogin){ %>
+    <div class="add-blog">
+        <form action="/newblog" method="get">
+            <button type="submit">+</button>            
+        </form>
+    </div>
+    <% } %>
+
+<%- include('partials/footer') -%>

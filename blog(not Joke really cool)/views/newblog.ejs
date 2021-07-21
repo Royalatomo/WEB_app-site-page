@@ -1,0 +1,60 @@
+<%- include('partials/header') -%>
+
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/newblog.css" />
+    <link rel="stylesheet" href="/css/blog.css" />
+
+
+    <div class="head">
+        <div class="info">
+            <div class="admin-info">
+                <div class="imgAdmin">
+                    <% if (verified){ %>
+                        <img class="verification" src="/img/tick.png" alt="">
+                    <% } %>
+                    <img src="<%=userImg%>" />
+                </div>
+                <div class="name">
+                    <p class="admin-name">Add A New Blog</p>
+                    <p class="message">Share Your Thoughts With Others!</p>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 5px;" class="button back-button">
+            <form action="/" method="get">
+              <button style="margin: 0;color: black;" type="submit">Back</button>
+            </form>
+          </div>
+    </div>
+    
+    <div class="formInput">
+        <form action="/compose"  enctype="multipart/form-data" method="POST">
+            <input oninput="checkLength()" maxlength="40" type="text" autocomplete="off" name="title" placeholder="Type Title For Your Blog ..." required>
+            <p class="maxlength">40</p>
+            <textarea oninput="duplicateTxtArea();" placeholder="Enter Content Here..." name="content" cols="30" rows="10"></textarea>
+            <div class="text-buttons">
+                <span>
+                    <button type="button" class="font-button" name="content"><i onclick="textStyle('b')" class="fas fa-bold fa-2x"></i></button>
+                    <button type="button" class="font-button" name="content"><i onclick="textStyle('i')" class="fas fa-italic fa-2x"></i></button>
+                    <button type="button" class="font-button" name="content"><i onclick="textStyle('u')" class="fas fa-underline fa-2x"></i></button>
+                    <button type="button" class="font-button" name="content"><i onclick="textStyle('s')" class="fas fa-search-plus fa-2x"></i></button>
+                </span>
+                <span>
+                    <button type="button" class="font-button" name="content"><i onclick="textStyle('l')" class="fas fa-align-left fa-2x"></i></button>
+                    <button type="button" class="font-button" name="content"><i onclick="textStyle('c')" class="fas fa-align-center fa-2x"></i></button>
+                    <button type="button" class="font-button" name="content"><i onclick="textStyle('r')" class="fas fa-align-right fa-2x"></i></button>
+                </span>
+            </div>
+            <textarea name="realContent" style="display: none;"></textarea>
+            <textarea name="normalContent" style="display: none;"></textarea>
+            <div class="textarea"></div>
+            
+            <input type="file" oninput="checkExtention()" name="img" accept="image/*" required>
+            <p id="img-text"></p>
+            <div class="center-div">
+                <button class="blue-button" name="submit-button" type="submit"><p>Post</p><img src="https://img.icons8.com/ios-filled/50/000000/circled-right.png"/></button>                
+            </div>
+        </form>
+    </div>
+
+<%- include('partials/footer') -%>

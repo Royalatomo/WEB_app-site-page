@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap');
+
+.head{
+    height: 30vw;
+    /* phone: 55vh */
+    background-position: -50rem -37rem;
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    padding-top: 7vw;
+}
+
+.imgAdmin img{
+    height: 130px;
+    width: 10rem;
+    border-radius: 50%;
+    border: 8px solid black;
+}
+
+.name p{
+    padding: 1rem;
+    padding-bottom: 0;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 1rem;
+    color: white;
+    font-weight: 700;
+}
+
+.name, .imgAdmin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name .message{
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 0;
+}
+
+
+.verification{
+    height: 3rem !important;
+    width: 3rem !important;
+    position: absolute;
+    border: 0 !important;
+    top: calc(7vw + 100px);
+    left: 53%;
+}
+
+.button{
+    padding: 10px;
+    position: absolute;
+    margin-top: 20px;
+    margin-right: 20px;
+    top: 0;
+    right: 0;
+    display: flex;
+    border: 4px solid black;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.button img{
+    height: 10vw;
+    max-height: 50px;
+    min-height: 40px;
+    /* height: 8vw; */
+    margin-left: 5px;
+}
+
+.button p{
+    font-size: 2rem;
+    /* font-size: 5vw; */
+    align-self: center;
+}
+

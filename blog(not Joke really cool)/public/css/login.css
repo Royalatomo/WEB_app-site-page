@@ -1,0 +1,13 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+@media all and (max-width: 850px) {
+    footer {
+        position: fixed;
+        width: 100%;
+    }
+}

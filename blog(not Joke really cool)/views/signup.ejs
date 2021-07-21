@@ -1,0 +1,30 @@
+<%- include('partials/header') -%>
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/signup.css" />
+
+<div class="container container-sign">
+    <div class="img">
+        <img src="/img/user<%=userNumber%>.jpg">
+    </div>
+    <div class="input-form">
+        <form action="/register" enctype="multipart/form-data" method="post">
+            <i class="fas fa-user fa-2x"><input oninput="checkNameLength()" type="text" name="full-name" placeholder="Full Name" required></i>
+
+            <i class="fas fa-envelope fa-2x"><input type="email" name="username" placeholder="Email Id" required></i>
+
+            <i class="fas fa-lock fa-2x"><input type="password" name="password" placeholder="Password"  oninput="checkPassword()" required></i>
+
+            <i class="fas fa-lock fa-2x"><input name="confirm-password" type="password" placeholder="Confirm Password" oninput="checkPassword()" required></i>
+            <p class="hidden red-color" id="pass-message"></p>
+
+            <i class="fas fa-image fa-2x"><input type="file" name="img" accept="image/*" oninput="checkExtention()" required></i></i>
+            <div class="red-color" id="img-text"></div>
+
+            <button type="submit" name="submit-button" class="blue-button"><i class="fas fa-sign-in-alt"></i>Sign Up</button>
+            <p>Already A Member? <a href="/login">Login</a></p>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

@@ -1,0 +1,58 @@
+<%- include('partials/header') -%>
+<link rel="stylesheet" href="/css/home.css" />
+<link rel="stylesheet" href="/css/blog.css" />
+
+<div
+  class="head"
+  style="
+    background: linear-gradient(rgb(0 0 0 / 0%), rgb(0 0 0 / 100%)),
+      url('<%=askedBlog.img%>');
+  "
+>
+  <div class="info">
+    <div class="admin-info">
+      <div class="imgAdmin">
+        <% if (verified){ %>
+          <img class="verification" src="/img/tick.png" alt="">
+      <% } %>
+        <img src="<%=userImg%>" />
+      </div>
+      <div class="name">
+        <p class="admin-name"><%=userName%></p>
+      </div>
+    </div>
+
+    <% if (!userLogin){ %>
+    <a style="color: black;" href="/login"><div class="button">
+      <p>login</p>
+      <img src="/img/login.png" alt="" />
+    </div></a>
+    <% } %>
+
+    <div style="padding: 0;" class="button back-button">
+      <form action="/" method="get">
+        <button type="submit">Back</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Button -->
+<% if (showTrash){ %>
+<div class="trash-button">
+  <form action="/remove/" method="post">
+    <input type="hidden" name="id" value="<%=askedBlog._id%>">
+    <button type="submit"><img src="/img/trash.png" alt="" /></button>
+  </form>
+</div>
+<% } %>
+
+
+<p class="time"><%=askedBlog.time%></p>
+<div class="blog">
+  <p class="blog-title"><%=askedBlog.title%></p>
+  <p id='content-render' class="blog-content"><%=askedBlog.content%></p>
+</div>
+
+<%- include('partials/footer') -%>

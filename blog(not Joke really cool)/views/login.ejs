@@ -1,0 +1,22 @@
+<%- include('partials/header') -%>
+
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/signup.css" />
+<link rel="stylesheet" href="/css/login.css" />
+
+<div class="container">
+    <div class="img">
+        <img src="/img/user<%=userNumber%>.jpg">
+    </div>
+    <div class="input-form">
+        <form action="/login" method="post">
+            <i class="fas fa-envelope fa-2x"><input type="text" name="username" placeholder="Email Id"></i>
+            <i class="fas fa-lock fa-2x"><input type="password" name="password" placeholder="Password"></i>
+            <button type="submit" class="blue-button"><i class="fas fa-sign-in-alt"></i>Login</button>
+            <p>Don't Have An Account? <a href="/signup">Sign Up</a></p>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
