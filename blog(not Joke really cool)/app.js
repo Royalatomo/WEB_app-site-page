@@ -14,7 +14,7 @@ const { v4: uuidv4 } = require('uuid'); // create new random ID's
 
 
 // Admin Account Mail
-const adminMail = ["admin@rawats.com"];
+const adminMail = "admin@rawats.com";
 
 
 // Connecting to the database
@@ -265,21 +265,21 @@ app.get('/blog/:title', (req, res) => {
                                     if (j.email === dataReturn.authorMail) {
                                         isVerified = true;  // set author to verified
 
-                                        let isAdmin = false;
 
                                         // if the logged in user is the author or user is admin
-                                        for (let admin of adminMail) {
-                                            if (i.mail == req.user.username || req.user.username === admin) {
+                                        if (i.mail == req.user.username || req.user.username === adminMail) {
+                                            if (i.mail == req.user.username){
                                                 res.render('blog', { askedBlog: dataReturn, showTrash: true, userLogin: true, userName: `${i.name} (You)`, userImg: i.photo, verified: true });
-                                                isAdmin = true;
+                                            }else{
+                                                res.render('blog', { askedBlog: dataReturn, showTrash: true, userLogin: true, userName: `${i.name}`, userImg: i.photo, verified: true });
                                             }
+
+                                        } else {
+                                            // if the logged in user is not the author
+                                            res.render('blog', { askedBlog: dataReturn, showTrash: false, userLogin: true, userName: i.name, userImg: i.photo, verified: true });
+
                                         }
-                                        setTimeout(() => {
-                                            if (!isAdmin) {
-                                                // if the logged in user is not the author
-                                                res.render('blog', { askedBlog: dataReturn, showTrash: false, userLogin: true, userName: i.name, userImg: i.photo, verified: true });
-                                            }
-                                        }, 100);
+
                                     }
                                 }
                             });
@@ -289,20 +289,17 @@ app.get('/blog/:title', (req, res) => {
                                 // if author is not verified
                                 if (!isVerified) {
 
-                                    let isAdmin = false;
                                     // if the logged in user is the author or user is admin
-                                    for (let admin of adminMail) {
-                                        if (i.mail == req.user.username || req.user.username === admin) {
+                                    if (i.mail == req.user.username || req.user.username === adminMail) {
+                                        if (i.mail == req.user.username){
                                             res.render('blog', { askedBlog: dataReturn, showTrash: true, userLogin: true, userName: `${i.name} (You)`, userImg: i.photo, verified: false });
+                                        }else{
+                                            res.render('blog', { askedBlog: dataReturn, showTrash: true, userLogin: true, userName: `${i.name}`, userImg: i.photo, verified: false });
                                         }
-                                        isAdmin = true;
+                                    } else {
+                                        // if the logged in user is not the author
+                                        res.render('blog', { askedBlog: dataReturn, showTrash: false, userLogin: true, userName: i.name, userImg: i.photo, verified: false });
                                     }
-                                    setTimeout(() => {
-                                        if (!isAdmin) {
-                                            // if the logged in user is not the author
-                                            res.render('blog', { askedBlog: dataReturn, showTrash: false, userLogin: true, userName: i.name, userImg: i.photo, verified: false });
-                                        }
-                                    }, 100);
                                 }
                             }, 100);
                         }
@@ -531,33 +528,23 @@ app.post('/remove', (req, res) => {
         blog.findById(req.body.id, (err, data) => {
             // if user is blog author or the user is admin
 
-            let isAdmin = false;
+            if (data.authorMail === req.user.username || req.user.username === admin) {
 
-            for (let admin of adminMail) {
-                if (data.authorMail === req.user.username || req.user.username === admin) {
-
-                    // find the blog's image location
-                    blog.findById(req.body.id, (err, data) => {
-                        // remove the image
-                        fs.unlink(`public${data.img}`, (err) => { });
-                    });
-                    // find the blog by id and remove it
-                    blog.findByIdAndRemove(req.body.id, (err) => { });
-                    setTimeout(() => {
-                        // send user to home screen
-                        res.redirect('/');
-                    }, 100);
-                    isAdmin = true;
-                }
+                // find the blog's image location
+                blog.findById(req.body.id, (err, data) => {
+                    // remove the image
+                    fs.unlink(`public${data.img}`, (err) => { });
+                });
+                // find the blog by id and remove it
+                blog.findByIdAndRemove(req.body.id, (err) => { });
+                setTimeout(() => {
+                    // send user to home screen
+                    res.redirect('/');
+                }, 100);
+            } else {
+                // if user is logged in user is not admin or author of the blog
+                res.send('<h1>Authentication Error!</h1><p>You Are Not Authorize To Remove This Post!</p>');
             }
-
-            setTimeout(() => {
-                if(!isAdmin) {
-                    // if user is logged in user is not admin or author of the blog
-                    res.send('<h1>Authentication Error!</h1><p>You Are Not Authorize To Remove This Post!</p>');
-                }
-            }, 100);
-
         });
 
     } else {
