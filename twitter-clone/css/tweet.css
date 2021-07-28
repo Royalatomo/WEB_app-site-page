@@ -1,0 +1,126 @@
+.tweet-search-container{
+    position: relative;
+    border-bottom: 2px solid #616161;
+    display: flex;
+    align-items: center;
+    max-height: 100px;
+    left: 20px;
+    margin-bottom: 50px;
+    width: 760px;
+}
+
+.tweet-search-container:hover{
+    cursor: pointer;
+}
+
+.tweet-search-container input{
+    width: 0;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: transparent;
+    font-size: 45px;
+    flex: 1;
+    color: white;
+}
+
+.tweet-search-container i{
+    font-size: 40px;
+}
+
+.tweet-search-container input:focus{
+    outline: none;
+    font-size: 40px;
+}
+
+.tweets-list{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 20px;
+    background-color: transparent;
+}
+
+.tweet-container{
+    border: 2px solid #1C1C1C;
+    padding: 20px;
+    height: fit-content;
+    background-color: transparent;
+    margin: 0;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    width: 700px;
+}
+
+.tweet-user-info{
+    display: flex;
+    align-items: center;
+}
+
+.tweet-profile{
+    width: 47px;
+    height: 47px;
+    background-size: contain;
+}
+
+.tweet-user-info .user-info{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-user-info .user-info *{
+    margin: 0;
+    font-size: 20px;
+    color: white;
+}
+
+.tweet-user-info .user-info h3{
+    font-size: 15px;
+}
+
+a{
+    text-decoration: none;
+    color: red;
+}
+
+.tweet-media-content *{
+    display: flex;
+}
+
+.tweet-media-content .images, .video{
+    border: 2px solid #1C1C1C;
+    border-radius: 40px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.tweet-media-content .tweet-image, .tweet-video{
+    /* flex: 1; */
+    flex-basis: 49.4%;
+    min-width: 300px;
+    min-height: 300px;
+    max-height: 500px;
+    flex-grow: 1;
+    border: 2px solid #1C1C1C;
+    background-size: cover;
+    background-position: center;
+}
+
+.tweet-media-content .images a{
+    flex-grow: 1;
+}
+
+.tweet-text-content{
+    padding-left: 3px;
+    margin-top: 15px;
+    color: white;
+}
+
+.tweet-post-time{
+    padding-left: 3px;
+    margin-top: 10px;
+    color: #47525D;
+    font-size: 13px;
+}

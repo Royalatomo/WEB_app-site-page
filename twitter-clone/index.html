@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/navigation.css">
+    <link rel="stylesheet" href="/css/tweet.css">
+    <link rel="stylesheet" href="/css/trending.css">
+    <script src="https://kit.fontawesome.com/a0db2215cb.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+</head>
+
+<body>
+    <div class="container home-page">
+        <div class="navigation-container">
+            <div class="navigation">
+                <div class="logo">
+                    <i class="fab icon fa-twitter"></i>
+                </div>
+                <div class="home-link">
+                    <i class="fas icon fa-home"></i>
+                </div>
+                <div class="explore-link">
+                    <i class="fas icon fa-hashtag"></i>
+                </div>
+                <div class="profile-link">
+                    <div style='background-image: url("https://www.meme-arsenal.com/memes/5e551342dd6df32903f513b3eeda08c8.jpg");'
+                        class="profile"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="main-container">
+            <div class="tweet-search-container">
+                <input type="text" id="search-input-box" placeholder="Search Twitter" onkeydown="onEnter(event)">
+                <i class="fas icon fa-search fa-flip-horizontal" onclick="getTwitterData()"></i>
+            </div>
+            <div class="tweets-list">
+                <div class="tweet-container">
+                    <div class="tweet-user-info">
+                        <div style="background-image: url('https://cdn.vox-cdn.com/thumbor/T_HeokuV-OOhnRGu37VWQu7f-Ug=/1400x788/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/19721018/Tanjiro__Demon_Slayer_.png');" class="profile"></div>
+                        <div class="user-info">
+                            <h4>Tanjiro</h4>
+                            <h3>@tanjiro_DemSlayer</h3>
+                        </div>
+                    </div>
+
+                    <div class="tweet-media-content">
+                        <div class="images">
+                            <div class="tweet-image" style="background-image: url('https://images.saymedia-content.com/.image/t_share/MTc0NDk1NzE3MDkwNDAzOTc0/animes-like-demon-slayer-kimetsu-no-yaiba.jpg');"></div>
+                            <div class="tweet-image" style="background-image: url('https://images.saymedia-content.com/.image/t_share/MTc0NDk1NzE3MDkwNDAzOTc0/animes-like-demon-slayer-kimetsu-no-yaiba.jpg');"></div>
+                            <div class="tweet-image" style="background-image: url('https://images.saymedia-content.com/.image/t_share/MTc0NDk1NzE3MDkwNDAzOTc0/animes-like-demon-slayer-kimetsu-no-yaiba.jpg');"></div>
+                            <div class="tweet-image" style="background-image: url('https://images.saymedia-content.com/.image/t_share/MTc0NDk1NzE3MDkwNDAzOTc0/animes-like-demon-slayer-kimetsu-no-yaiba.jpg');"></div>
+                        </div>
+                    </div>
+                    <div class="tweet-text-content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    </div>
+                    <div class="tweet-post-time">
+                        20 hours ago
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: none;" class="next-page-container" onclick="loadNextPage()">
+                <div class="next-page">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="trending-container">
+            <div class="treding-box">
+                <div class="hashtags-box">
+                    <div class="heading">Trends For You</div>
+                    <div onclick="searchTag('#Coding')" class="hashtag">#Coding</div>
+                    <div onclick="searchTag('#JavaScript')" class="hashtag">#JavaScript</div>
+                    <div onclick="searchTag('#Python')" class="hashtag">#Python</div>
+                    <div onclick="searchTag('#Anime')" class="hashtag">#Anime</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="/js/index.js"></script>
+
+</body>
+
+</html>

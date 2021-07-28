@@ -1,0 +1,42 @@
+.navigation{
+    width: 100%;
+}
+
+.logo, .home-link, .explore-link, .profile-link{
+    display: flex;
+    justify-content: center;
+}
+
+.home-link{
+    border-right: 5px solid #00ADFF;
+    height: 60px;
+    align-items: center;
+    margin-top: 26px;
+    margin-bottom: 37px;
+}
+
+.icon{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.fa-home{
+    color: #00ADFF;
+    margin-top: 26px;
+}
+
+.fa-home, .fa-hashtag{
+    margin-bottom: 37px;
+}
+
+.fa-twitter{
+    font-size: 3.5rem;
+}
+
+.profile{
+    border-radius: 50%;
+    height: 62px;
+    width: 62px;
+    background-size: cover;
+    border: 1px solid #979797;
+}
